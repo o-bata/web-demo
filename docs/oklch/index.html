@@ -54,6 +54,33 @@
   <h2>彩度の変化の比較</h2>
   <p>以下は、同じ明度と色相で彩度だけを変化させた時の色の見え方の比較です。</p>
 
+  <h2>グラデーションの美しさ</h2>
+  <p>OKLCHはグラデーションを作成する際にも優れた特性を発揮します。以下の例では、同じ色相で明度を変化させたグラデーションを比較しています。</p>
+
+  <h3>OKLCH グラデーション (H=40, C=0.2)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: oklch(0.3 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.4 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.5 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.7 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.8 0.2 40);"></div>
+  </div>
+
+  <h3>HSL グラデーション (H=40°, S=50%)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: hsl(40, 50%, 30%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 50%, 40%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 50%, 50%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 50%, 70%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 50%, 80%);"></div>
+  </div>
+
+  <p>
+    OKLCHのグラデーションは、明度の変化に応じて自然な色の変化を示します。一方、HSLでは明度を変化させると色の鮮やかさが不均一になり、特に暗い部分で色が濁って見えることがあります。これは、OKLCHが人間の視覚特性に基づいて設計されているためです。
+  </p>
+
   <h3>OKLCH (L=0.7, H=40)</h3>
   <div class="color-container">
     <div class="color-box" style="background-color: oklch(0.7 0.1 40);"></div>
