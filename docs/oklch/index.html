@@ -52,11 +52,31 @@
   <h2>他の色空間との比較</h2>
   <p>代表的な色空間として以下のものがあります：</p>
   <ul>
-    <li><strong>RGB</strong>: 赤・緑・青の強さで色を表す。モニターでの表示に最適だが、人の視覚的な差異とは一致しにくい。</li>
+    <li><strong>RGB</strong>: 赤・緑・青の強さで色を表す。モニターでの表示に最適だが、人の視覚的な差異とは一致しにくい。
+      <ul>
+        <li>16進数表記（#RRGGBB[AA]）: 各色8bit（0-255）、透明度も8bit（0-255）</li>
+        <li>rgba()関数: 各色0-255または0-100%、透明度は0-1の小数で指定可能</li>
+        <li>透明度の実用範囲：人間の目で識別できる透明度の違いは20-30段階程度のため、5%単位での指定で十分</li>
+      </ul>
+    </li>
     <li><strong>HSL</strong>: 色相（0〜360）・彩度（0〜100%）・明度（0〜100%）。直感的だが色のバランスに偏りが出やすい。</li>
     <li><strong>LCH</strong>: CIELABに基づく色空間で、明度・彩度・色相で表現。OKLCHの元となった色空間だが、人の視覚特性との一致が完全ではない。</li>
     <li><strong>OKLCH</strong>: 視覚均等性に基づく設計で、彩度や明度を変化させた時に自然な色の変化が得られる。</li>
   </ul>
+
+  <div class="color-container">
+    <div class="color-box" style="background-color: rgba(255, 0, 0, 0.2);"></div>
+    <div class="color-box" style="background-color: rgba(255, 0, 0, 0.4);"></div>
+    <div class="color-box" style="background-color: rgba(255, 0, 0, 0.6);"></div>
+    <div class="color-box" style="background-color: rgba(255, 0, 0, 0.8);"></div>
+    <div class="color-box" style="background-color: rgba(255, 0, 0, 1);"></div>
+  </div>
+  <pre><code>/* 実用的な透明度の段階（20%ごと） */
+background-color: rgba(255, 0, 0, 0.2);  /* 20%不透明 */
+background-color: rgba(255, 0, 0, 0.4);  /* 40%不透明 */
+background-color: rgba(255, 0, 0, 0.6);  /* 60%不透明 */
+background-color: rgba(255, 0, 0, 0.8);  /* 80%不透明 */
+background-color: rgba(255, 0, 0, 1);    /* 完全不透明 */</code></pre>
 
   <h2>LCHとOKLCHの比較</h2>
   <p>
