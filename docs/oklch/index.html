@@ -63,45 +63,40 @@
   <h2>グラデーションの美しさ</h2>
   <p>OKLCHはグラデーションを作成する際にも優れた特性を発揮します。以下の例では、CSSのグラデーションを使用して比較しています。</p>
 
-  <h3>OKLCH グラデーション</h3>
-  <div class="gradient-box" style="background: linear-gradient(to right, oklch(0.4 0.3 120), oklch(0.7 0.3 120));"></div>
-  <pre><code>background: linear-gradient(to right, oklch(0.4 0.3 120), oklch(0.7 0.3 120));</code></pre>
+  <h2>色相変化の統一性</h2>
+  <p>OKLCHは、同じ明度と彩度で色相だけを変化させた場合でも、色の鮮やかさや明るさが統一されるという特徴があります。以下の例で比較してみましょう。</p>
 
-  <h3>HSL グラデーション</h3>
-  <div class="gradient-box" style="background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(120, 80%, 70%));"></div>
-  <pre><code>background: linear-gradient(to right, hsl(120, 80%, 40%), hsl(120, 80%, 70%));</code></pre>
-
-  <h3>OKLCH マルチカラーグラデーション</h3>
-  <div class="gradient-box" style="background: linear-gradient(to right, oklch(0.5 0.3 120), oklch(0.6 0.3 200), oklch(0.5 0.3 280));"></div>
-  <pre><code>background: linear-gradient(to right, oklch(0.5 0.3 120), oklch(0.6 0.3 200), oklch(0.5 0.3 280));</code></pre>
-
-  <h3>HSL マルチカラーグラデーション</h3>
-  <div class="gradient-box" style="background: linear-gradient(to right, hsl(120, 80%, 50%), hsl(200, 80%, 60%), hsl(280, 80%, 50%));"></div>
-  <pre><code>background: linear-gradient(to right, hsl(120, 80%, 50%), hsl(200, 80%, 60%), hsl(280, 80%, 50%));</code></pre>
-
-  <p>
-    OKLCHのグラデーションは、明度の変化に応じて自然な色の変化を示します。一方、HSLでは明度を変化させると色の鮮やかさが不均一になり、特に暗い部分で色が濁って見えることがあります。これは、OKLCHが人間の視覚特性に基づいて設計されているためです。
-  </p>
-
-  <h3>OKLCH (L=0.7, H=40)</h3>
+  <h3>OKLCH 色相変化 (L=0.6, C=0.2)</h3>
   <div class="color-container">
-    <div class="color-box" style="background-color: oklch(0.7 0.1 40);"></div>
-    <div class="color-box" style="background-color: oklch(0.7 0.2 40);"></div>
-    <div class="color-box" style="background-color: oklch(0.7 0.3 40);"></div>
-    <div class="color-box" style="background-color: oklch(0.7 0.4 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 0);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 120);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 180);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 240);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.2 300);"></div>
   </div>
+  <pre><code>oklch(0.6 0.2 0)    /* 赤 */
+oklch(0.6 0.2 60)   /* 黄 */
+oklch(0.6 0.2 120)  /* 緑 */
+oklch(0.6 0.2 180)  /* シアン */
+oklch(0.6 0.2 240)  /* 青 */
+oklch(0.6 0.2 300)  /* マゼンタ */</code></pre>
 
-  <h3>HSL (H=40°, L=70%)</h3>
+  <h3>HSL 色相変化 (L=60%, S=50%)</h3>
   <div class="color-container">
-    <div class="color-box" style="background-color: hsl(40, 20%, 70%);"></div>
-    <div class="color-box" style="background-color: hsl(40, 40%, 70%);"></div>
-    <div class="color-box" style="background-color: hsl(40, 60%, 70%);"></div>
-    <div class="color-box" style="background-color: hsl(40, 80%, 70%);"></div>
+    <div class="color-box" style="background-color: hsl(0, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(60, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(120, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(180, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(240, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: hsl(300, 50%, 60%);"></div>
   </div>
-
-  <p>
-    HSLでは高彩度になるほど色が不自然に感じられることがありますが、OKLCHは彩度を上げても滑らかで調和の取れた色合いになります。
-  </p>
+  <pre><code>hsl(0, 50%, 60%)    /* 赤 */
+hsl(60, 50%, 60%)   /* 黄 */
+hsl(120, 50%, 60%)  /* 緑 */
+hsl(180, 50%, 60%)  /* シアン */
+hsl(240, 50%, 60%)  /* 青 */
+hsl(300, 50%, 60%)  /* マゼンタ */</code></pre>
 
   <h2>まとめ</h2>
   <p>
