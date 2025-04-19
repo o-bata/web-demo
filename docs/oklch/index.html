@@ -42,7 +42,7 @@
 
   <ul>
     <li><strong>L</strong>: 明度（0〜1）</li>
-    <li><strong>C</strong>: 彩度（Chroma）</li>
+    <li><strong>C</strong>: 彩度（Chroma、0〜0.37程度。色相によって最大値が異なり、黄色は0.37程度、青は0.3程度まで）</li>
     <li><strong>H</strong>: 色相（Hue、度数 0〜360）</li>
   </ul>
 
@@ -53,50 +53,135 @@
   <p>代表的な色空間として以下のものがあります：</p>
   <ul>
     <li><strong>RGB</strong>: 赤・緑・青の強さで色を表す。モニターでの表示に最適だが、人の視覚的な差異とは一致しにくい。</li>
-    <li><strong>HSL</strong>: 色相・彩度・明度。直感的だが色のバランスに偏りが出やすい。</li>
+    <li><strong>HSL</strong>: 色相（0〜360）・彩度（0〜100%）・明度（0〜100%）。直感的だが色のバランスに偏りが出やすい。</li>
+    <li><strong>LCH</strong>: CIELABに基づく色空間で、明度・彩度・色相で表現。OKLCHの元となった色空間だが、人の視覚特性との一致が完全ではない。</li>
     <li><strong>OKLCH</strong>: 視覚均等性に基づく設計で、彩度や明度を変化させた時に自然な色の変化が得られる。</li>
   </ul>
 
-  <h2>彩度の変化の比較</h2>
-  <p>以下は、同じ明度と色相で彩度だけを変化させた時の色の見え方の比較です。</p>
+  <h2>LCHとOKLCHの比較</h2>
+  <p>
+    LCHはCIELAB色空間を極座標で表現したもので、OKLCHの元となった色空間です。OKLCHはLCHをベースに、より人間の視覚特性に合わせて改良されています。
+    以下は、同じパラメータ値でLCHとOKLCHを比較した例です。
+  </p>
 
-  <h2>グラデーションの美しさ</h2>
-  <p>OKLCHはグラデーションを作成する際にも優れた特性を発揮します。以下の例では、CSSのグラデーションを使用して比較しています。</p>
+  <h3>色相の変化の比較（L=65, C=50）</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: lch(65 50 0);"></div>
+    <div class="color-box" style="background-color: lch(65 50 60);"></div>
+    <div class="color-box" style="background-color: lch(65 50 120);"></div>
+    <div class="color-box" style="background-color: lch(65 50 180);"></div>
+    <div class="color-box" style="background-color: lch(65 50 240);"></div>
+    <div class="color-box" style="background-color: lch(65 50 300);"></div>
+  </div>
+  <pre><code>/* LCH */
+lch(65 50 0)    /* 赤 */
+lch(65 50 60)   /* 黄 */
+lch(65 50 120)  /* 緑 */
+lch(65 50 180)  /* シアン */
+lch(65 50 240)  /* 青 */
+lch(65 50 300)  /* マゼンタ */</code></pre>
+
+  <div class="color-container">
+    <div class="color-box" style="background-color: oklch(0.65 0.25 0);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 120);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 180);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 240);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 300);"></div>
+  </div>
+  <pre><code>/* OKLCH */
+oklch(0.65 0.25 0)    /* 赤 */
+oklch(0.65 0.25 60)   /* 黄 */
+oklch(0.65 0.25 120)  /* 緑 */
+oklch(0.65 0.25 180)  /* シアン */
+oklch(0.65 0.25 240)  /* 青 */
+oklch(0.65 0.25 300)  /* マゼンタ */</code></pre>
+
+  <p>
+    LCHとOKLCHの主な違いは以下の通りです：
+  </p>
+  <ul>
+    <li><strong>明度の知覚</strong>: OKLCHは人間の明度知覚により忠実で、同じ明度値でもより均一に感じられます。</li>
+    <li><strong>彩度の範囲</strong>: LCHは理論上の色空間で、表示できない色も含みます。OKLCHは実用的な範囲（0〜0.37程度）に最適化されています。</li>
+    <li><strong>色の均一性</strong>: OKLCHは色相や彩度を変えても、人間の目には均一な変化として知覚されます。</li>
+  </ul>
 
   <h2>色相変化の統一性</h2>
   <p>OKLCHは、同じ明度と彩度で色相だけを変化させた場合でも、色の鮮やかさや明るさが統一されるという特徴があります。以下の例で比較してみましょう。</p>
 
-  <h3>OKLCH 色相変化 (L=0.6, C=0.2)</h3>
-  <div class="color-container">
-    <div class="color-box" style="background-color: oklch(0.6 0.2 0);"></div>
-    <div class="color-box" style="background-color: oklch(0.6 0.2 60);"></div>
-    <div class="color-box" style="background-color: oklch(0.6 0.2 120);"></div>
-    <div class="color-box" style="background-color: oklch(0.6 0.2 180);"></div>
-    <div class="color-box" style="background-color: oklch(0.6 0.2 240);"></div>
-    <div class="color-box" style="background-color: oklch(0.6 0.2 300);"></div>
-  </div>
-  <pre><code>oklch(0.6 0.2 0)    /* 赤 */
-oklch(0.6 0.2 60)   /* 黄 */
-oklch(0.6 0.2 120)  /* 緑 */
-oklch(0.6 0.2 180)  /* シアン */
-oklch(0.6 0.2 240)  /* 青 */
-oklch(0.6 0.2 300)  /* マゼンタ */</code></pre>
+  <p>
+    <strong>色空間の違い</strong><br>
+    CSSのHSLやRGBはsRGB色空間に基づいています。sRGBはディスプレイの表示に最適化された色空間で、人間の視覚特性を完全には反映していません。<br>
+    一方、OKLCHは人間の視覚特性に基づいて設計された色空間で、より自然な色の変化を実現できます。特に、色の知覚的な距離が均一になるように設計されており、色相や明度を変化させた時の色の変化が自然に見えます。
+  </p>
 
-  <h3>HSL 色相変化 (L=60%, S=50%)</h3>
+  <h3>OKLCH 色相変化 (L=0.65, C=0.25)</h3>
   <div class="color-container">
-    <div class="color-box" style="background-color: hsl(0, 50%, 60%);"></div>
-    <div class="color-box" style="background-color: hsl(60, 50%, 60%);"></div>
-    <div class="color-box" style="background-color: hsl(120, 50%, 60%);"></div>
-    <div class="color-box" style="background-color: hsl(180, 50%, 60%);"></div>
-    <div class="color-box" style="background-color: hsl(240, 50%, 60%);"></div>
-    <div class="color-box" style="background-color: hsl(300, 50%, 60%);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 0);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 120);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 180);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 240);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 300);"></div>
   </div>
-  <pre><code>hsl(0, 50%, 60%)    /* 赤 */
-hsl(60, 50%, 60%)   /* 黄 */
-hsl(120, 50%, 60%)  /* 緑 */
-hsl(180, 50%, 60%)  /* シアン */
-hsl(240, 50%, 60%)  /* 青 */
-hsl(300, 50%, 60%)  /* マゼンタ */</code></pre>
+  <pre><code>oklch(0.65 0.25 0)    /* 赤 */
+oklch(0.65 0.25 60)   /* 黄 */
+oklch(0.65 0.25 120)  /* 緑 */
+oklch(0.65 0.25 180)  /* シアン */
+oklch(0.65 0.25 240)  /* 青 */
+oklch(0.65 0.25 300)  /* マゼンタ */</code></pre>
+
+  <h3>HSL 色相変化 (L=65%, S=85%)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: hsl(0, 85%, 65%);"></div>
+    <div class="color-box" style="background-color: hsl(60, 85%, 65%);"></div>
+    <div class="color-box" style="background-color: hsl(120, 85%, 65%);"></div>
+    <div class="color-box" style="background-color: hsl(180, 85%, 65%);"></div>
+    <div class="color-box" style="background-color: hsl(240, 85%, 65%);"></div>
+    <div class="color-box" style="background-color: hsl(300, 85%, 65%);"></div>
+  </div>
+  <pre><code>hsl(0, 85%, 65%)    /* 赤 */
+hsl(60, 85%, 65%)   /* 黄 */
+hsl(120, 85%, 65%)  /* 緑 */
+hsl(180, 85%, 65%)  /* シアン */
+hsl(240, 85%, 65%)  /* 青 */
+hsl(300, 85%, 65%)  /* マゼンタ */</code></pre>
+
+  <p>
+    OKLCHでは、色相を変化させても各色の明るさや鮮やかさが統一されています。一方、HSLでは同じ明度と彩度の値でも、黄色や青色が特に明るく感じられるなど、色相によって明るさや鮮やかさが異なって見えます。これは、OKLCHが人間の視覚特性に基づいて設計されているためです。
+  </p>
+
+  <h2>明度の変化</h2>
+  <p>OKLCHの明度（L）は、0から1の範囲で変化させることができます。以下は同じ色相と彩度で明度だけを変化させた例です。</p>
+
+  <h3>OKLCH 明度変化 (H=60, C=0.25)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: oklch(0.3 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.45 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.6 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.75 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.9 0.25 60);"></div>
+  </div>
+  <pre><code>oklch(0.3 0.25 60)   /* 暗い */
+oklch(0.45 0.25 60)
+oklch(0.6 0.25 60)
+oklch(0.75 0.25 60)
+oklch(0.9 0.25 60)   /* 明るい */</code></pre>
+
+  <h2>彩度の変化</h2>
+  <p>OKLCHの彩度（C）は、色相によって最大値が異なりますが、一般的に0から0.37程度の範囲で使用します。以下は同じ色相と明度で彩度だけを変化させた例です。</p>
+
+  <h3>OKLCH 彩度変化 (H=60, L=0.65)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: oklch(0.65 0.05 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.15 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.25 60);"></div>
+    <div class="color-box" style="background-color: oklch(0.65 0.35 60);"></div>
+  </div>
+  <pre><code>oklch(0.65 0.05 60)  /* くすんだ */
+oklch(0.65 0.15 60)
+oklch(0.65 0.25 60)
+oklch(0.65 0.35 60)  /* 鮮やか */</code></pre>
 
   <h2>まとめ</h2>
   <p>
