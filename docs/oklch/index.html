@@ -21,6 +21,10 @@
     .color-container {
       margin-top: 1rem;
     }
+    pre {
+      background-color: #eee;
+      padding: 0.5rem;
+    }
   </style>
 </head>
 <body>
@@ -39,17 +43,40 @@
   <p>CSSでは、以下のように指定できます:</p>
   <pre><code>color: oklch(0.75 0.2 40);</code></pre>
 
+  <h2>他の色空間との比較</h2>
+  <p>代表的な色空間として以下のものがあります：</p>
+  <ul>
+    <li><strong>RGB</strong>: 赤・緑・青の強さで色を表す。モニターでの表示に最適だが、人の視覚的な差異とは一致しにくい。</li>
+    <li><strong>HSL</strong>: 色相・彩度・明度。直感的だが色のバランスに偏りが出やすい。</li>
+    <li><strong>OKLCH</strong>: 視覚均等性に基づく設計で、彩度や明度を変化させた時に自然な色の変化が得られる。</li>
+  </ul>
+
+  <h2>彩度の変化の比較</h2>
+  <p>以下は、同じ明度と色相で彩度だけを変化させた時の色の見え方の比較です。</p>
+
+  <h3>OKLCH (L=0.7, H=40)</h3>
   <div class="color-container">
-    <h2>デモカラー</h2>
-    <div class="color-box" style="background-color: oklch(0.8 0.3 20);"></div>
-    <div class="color-box" style="background-color: oklch(0.8 0.3 120);"></div>
-    <div class="color-box" style="background-color: oklch(0.8 0.3 240);"></div>
-    <div class="color-box" style="background-color: oklch(0.8 0.3 300);"></div>
+    <div class="color-box" style="background-color: oklch(0.7 0.1 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.7 0.2 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.7 0.3 40);"></div>
+    <div class="color-box" style="background-color: oklch(0.7 0.4 40);"></div>
+  </div>
+
+  <h3>HSL (H=40°, L=70%)</h3>
+  <div class="color-container">
+    <div class="color-box" style="background-color: hsl(40, 20%, 70%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 40%, 70%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 60%, 70%);"></div>
+    <div class="color-box" style="background-color: hsl(40, 80%, 70%);"></div>
   </div>
 
   <p>
-    近年、主要ブラウザがOKLCHに対応しつつあり、色彩の調整やテーマカラーの設計に役立ちます。
+    HSLでは高彩度になるほど色が不自然に感じられることがありますが、OKLCHは彩度を上げても滑らかで調和の取れた色合いになります。
+  </p>
+
+  <h2>まとめ</h2>
+  <p>
+    OKLCHは、デザインやUI設計において色の統一性・調整のしやすさを高めるための新しいカラーモデルです。アクセシビリティや色の再現性を重視する場面で特に有効です。
   </p>
 </body>
 </html>
-
