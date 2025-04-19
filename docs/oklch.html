@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OKLCH カラーモデルの説明</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+      background-color: #f5f5f5;
+    }
+    .color-box {
+      width: 100px;
+      height: 100px;
+      margin: 0.5rem;
+      display: inline-block;
+      border: 1px solid #ccc;
+    }
+    .color-container {
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>OKLCH カラーモデルの説明</h1>
+  <p>
+    <strong>OKLCH</strong> は、色を <code>Oklch(L C H)</code> の形式で指定するカラーモデルです。<br>
+    より人間の視覚に近い形で色の距離を表現でき、カラーアクセシビリティに優れています。
+  </p>
+
+  <ul>
+    <li><strong>L</strong>: 明度（0〜1）</li>
+    <li><strong>C</strong>: 彩度（Chroma）</li>
+    <li><strong>H</strong>: 色相（Hue、度数 0〜360）</li>
+  </ul>
+
+  <p>CSSでは、以下のように指定できます:</p>
+  <pre><code>color: oklch(0.75 0.2 40);</code></pre>
+
+  <div class="color-container">
+    <h2>デモカラー</h2>
+    <div class="color-box" style="background-color: oklch(0.8 0.3 20);"></div>
+    <div class="color-box" style="background-color: oklch(0.8 0.3 120);"></div>
+    <div class="color-box" style="background-color: oklch(0.8 0.3 240);"></div>
+    <div class="color-box" style="background-color: oklch(0.8 0.3 300);"></div>
+  </div>
+
+  <p>
+    近年、主要ブラウザがOKLCHに対応しつつあり、色彩の調整やテーマカラーの設計に役立ちます。
+  </p>
+</body>
+</html>
+
